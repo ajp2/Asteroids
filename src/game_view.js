@@ -9,9 +9,9 @@ GameView.prototype.start = function() {
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
     this.game.addAsteroids();
   } 
-  
+
   const renderAsteroids = setInterval(() => {
-    this.game.moveObjects();
+    this.game.step();
     this.game.draw(this.ctx);
   }, 20);
 };

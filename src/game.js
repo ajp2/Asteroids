@@ -6,7 +6,7 @@ function Game() {
 
 Game.DIM_X = 600;
 Game.DIM_Y = 400;
-Game.NUM_ASTEROIDS = 10;
+Game.NUM_ASTEROIDS = 3;
 
 Game.prototype.addAsteroids = function() {
   const options = { game: this, pos: this.randomPosition() };
@@ -41,6 +41,24 @@ Game.prototype.wrap = function(pos) {
   y = pos[1] < 0 ? Game.DIM_Y : y;
 
   return [x, y];
+};
+
+Game.prototype.checkCollisions = function() {
+  for (let i = 0; i < this.asteroids.length; i++) {
+    for (let j = i + 1; j < this.asteroids.length; j++) {
+      if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
+        alert("COLLISION");
+        return true;
+      }
+    }
+  }
+
+  return false;
+};
+
+Game.prototype.step = function() {
+  this.moveObjects();
+  this.checkCollisions();
 };
 
 module.exports = Game;

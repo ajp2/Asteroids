@@ -28,4 +28,13 @@ MovingObject.prototype.move = function() {
   this.pos = this.game.wrap(this.pos);
 };
 
+MovingObject.prototype.isCollidedWith = function(otherObject) {
+  // collided if distance between center points < sum of radii
+  const xDiff = (this.pos[0] - otherObject.pos[0]);
+  const yDiff = this.pos[1] - otherObject.pos[1];
+  const distance = Math.sqrt((xDiff ** 2) + (yDiff ** 2));
+
+  return distance < (this.radius + otherObject.radius);
+};
+
 module.exports = MovingObject;
