@@ -6,7 +6,8 @@ function Asteroid(posObject) {
     pos: posObject.pos,
     vel: Util.randomVec(5),
     radius: Asteroid.RADIUS,
-    color: Asteroid.COLOR
+    color: Asteroid.COLOR,
+    game: posObject.game
   });
 }
 
