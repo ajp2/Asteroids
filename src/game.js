@@ -32,3 +32,5 @@ Game.prototype.moveObjects = function() {
     asteroid.move();
   });
 };
+
+module.exports = Game;
