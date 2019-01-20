@@ -6,6 +6,8 @@ function GameView(ctx) {
 }
 
 GameView.prototype.start = function() {
+  this.game.bindKeyHandlers();
+  
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
     this.game.addAsteroids();
   } 

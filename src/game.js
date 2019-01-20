@@ -8,7 +8,7 @@ function Game() {
 
 Game.DIM_X = 600;
 Game.DIM_Y = 400;
-Game.NUM_ASTEROIDS = 10;
+Game.NUM_ASTEROIDS = 5;
 
 Game.prototype.addAsteroids = function() {
   const options = { game: this, pos: this.randomPosition() };
@@ -72,6 +72,13 @@ Game.prototype.remove = function(asteroid) {
 
 Game.prototype.allObjects = function() {
   return this.asteroids.concat(this.ship);
+};
+
+Game.prototype.bindKeyHandlers = function() {
+  key('w', () => this.ship.power([0, -1]));
+  key('a', () => this.ship.power([-1, 0]));
+  key('s', () => this.ship.power([0, 1]));
+  key('d', () => this.ship.power([1, 0]));
 };
 
 module.exports = Game;
