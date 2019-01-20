@@ -28,30 +28,30 @@ Ship.prototype.power = function(impulse) {
 };
 
 Ship.prototype.fireBullet = function() {
-  let x, y, dx, dy;
+  let x = this.pos[0], y = this.pos[1], dx = 0, dy = 0;
 
   if (this.vel[0] > 0) {
     x = this.pos[0] + Ship.RADIUS;
-    dx = 5;
-    dy = 1;
+    dx = 20;
   } else if (this.vel[0] < 0) {
     x = this.pos[0] - Ship.RADIUS;
-    dx = -5;
-    dy = 0;
+    dx = -20;
   }
 
   if (this.vel[1] > 0) {
     y = this.pos[1] + Ship.RADIUS;
-    dx = dx || 0;
-    dy = 5;
+    dx = dx === 0 ? 0 : dx;
+    dy = 20;
   } else if (this.vel[1] < 0) {
     y = this.pos[1] - Ship.RADIUS;
-    dx = dx || 0;
-    dy = -5;
+    dx = dx === 0 ? 0 : dx;
+    dy = -20;
   }
 
-  console.log([dx, dy]);
-
+  if (this.vel[0] === 0 && this.vel[1] === 0) {
+    x = undefined;
+    y = undefined;
+  }
 
   const bullet = new Bullet({
     pos: [x, y],
