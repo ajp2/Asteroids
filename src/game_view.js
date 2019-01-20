@@ -6,6 +6,10 @@ function GameView(ctx) {
 }
 
 GameView.prototype.start = function() {
+  const img = new Image();
+  img.onload = () => ctx.drawImage(img, 0, 0, 900, 600);
+  img.src = "../download.jpeg";
+  
   this.game.bindKeyHandlers();
   
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {

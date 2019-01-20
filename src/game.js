@@ -8,8 +8,8 @@ function Game() {
   this.bullets = [];
 }
 
-Game.DIM_X = 600;
-Game.DIM_Y = 400;
+Game.DIM_X = 900;
+Game.DIM_Y = 500;
 Game.NUM_ASTEROIDS = 5;
 
 Game.prototype.addAsteroids = function() {
